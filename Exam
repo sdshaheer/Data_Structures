@@ -1,0 +1,65 @@
+
+import java.util.Scanner;
+
+class Node{
+    int data;
+    Node next;
+    public Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class Linked{
+    Scanner sc;
+    public Linked(){
+        sc=new Scanner(System.in);
+    }
+    public Node create(Node head){
+        while(true){
+            System.out.println("Enter data");
+            int a=sc.nextInt();
+            head=insert(head,a);
+            System.out.println("Enter 1 for continue");
+            int b=sc.nextInt();
+            if(b!=1)
+                break;
+        }
+        return head;
+    }
+    public Node insert(Node head,int data){
+        Node temp=new Node(data);
+        if(head==null)
+            head=temp;
+        else{
+            Node t=head;
+            while(t.next!=null)
+                t=t.next;
+            t.next=temp;
+        }
+        return head;
+    }
+    public void find(Node head,int num){
+        Node temp=head;
+        int count=1;
+        while(temp!=null){
+            if(count==num){
+                System.out.println(temp.data);
+                return;
+            }
+            temp=temp.next;
+            count++;
+        }
+    }
+}
+
+public class exam {
+    public static void main(String args[]){
+        Node head=null;
+        Linked obj=new Linked();
+        head=obj.create(head);
+        obj.find(head,4);
+    }
+}
+   
+
+
